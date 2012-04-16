@@ -23,10 +23,12 @@ The "hello" and "img" words serve as sort of key so it's easier to locate the tr
 
 index-es.json:
 
+```javascript
     {
       "hello": "Hola!"
       "img" : "Esto es una imagen!"
     }
+```
     
 ### Call the plugin!
 
@@ -88,6 +90,7 @@ If the key for a given value contains nested values, it will try change them all
 
 index-es.json:
 
+```javascript
     {
       "hello": "Hola!"
       "img" : {
@@ -95,6 +98,7 @@ index-es.json:
       	"src" : "linktootherimage.jpg"
       }
     }
+```
 
 The *text* attribute will replace the normal behaviour and will follow the aforementioned rules to translate the element. The remaining attributes will be directly changed on the element.
 
@@ -134,4 +138,4 @@ Written by Antonio Laguna (@Belelros)
 Please use it, and contribute changes.
 
 Based on Jim Garvin's Localisation jQuery plugin.
-http://keith-wood.name/localisation.html
+https://github.com/coderifous/jquery-localize
