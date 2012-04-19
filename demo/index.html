@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQueryTranslator - Simple jQuery Translation / Localization for your projects</title>
+    <meta charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Chelsea+Market' rel='stylesheet' type='text/css'>
+    <link href="css/page.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+    <a href="https://github.com/Belelros/jqueryTranslator">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="images/forkme.png" alt="Fork me on GitHub">
+    </a>
+	<div id="wrapper">
+        <article>			
+			<p data-translate="pIntro">jQueryTranslator is a jQuery plugin which allows developers to translate a static web site easily.</p>
+			
+			<ol>
+				<li data-translate="liIntro1">It first loads asynchronously the translation files you supply to the plugin. It can be a string or an array of them.</li>
+				<li data-translate="liIntro2">Then, it translates the element based on the user's browser language. The plugin is able to translate the text of the element or change attributes, or even both!</p></li>
+				<li data-translate="liIntro3">Finally, if you supply a callback, it will be executed over every element to be translated.</li>
+			</ol>
+			
+			<h2 data-translate="uandD">Usage &amp; Documentation</h2>			
+				<p data-translate="includePlugin">Just include one of the plugin files in your file.</p>			
+				<h3 data-translate="useDataTranslate">Use the "data-translate" attribute on DOM elements you want to be translated</h3>				
+					<pre>
+&lt;h1 data-translate="hello"&gt; Hello! &lt;/h1&gt;
+&lt;img data-translate="img" alt="This is an image!" src="someimage.jpg" /&gt;
+					</pre>				
+					<p data-translate="keyExplanation">The "hello" and "img" words serve as sort of key so it's easier to locate the translation.</p>
+				
+				<h3 data-translate="createJSON">Create a JSON language file with the translations:</h3>			
+					<p>index-es.json:</p>
+				
+					<pre>
+{
+  "hello": "Hola!"
+  "img" : "Esto es una imagen!"
+}
+					</pre>				
+				<h3 data-translate="callPlugin">Call the plugin!</h3>
+				
+				<pre>
+$("[data-translate]").jqTranslate('index');
+				</pre>
+				
+				<h3 data-translate="inDepth">In-depth explanation and Documentation</h3>
+				
+					<p data-translate="inDepth1">The first argument the plugin receives, is the package that it has to load. You may have different packs for different parts of the website (header, dialogs, etc);</p>
+					<p data-translate="inDepth2">You can load more than one package like this:</p>		
+					<pre>
+	$("[data-translate]").jqTranslate(['index', 'header', 'footer']);
+					</pre>
+				
+					<p data-translate="inDepth3">If the language of the user's browser is "es", the plugin will try to load:</p>				
+					<ul>
+						<li>index-es.json</li>
+						<li>header-es.json</li>
+						<li>footer-es.json</li>
+					</ul>				
+					<p data-translate="inDepth4">If the language also has a country code, like "es-MX", the plugin will ALSO try to load the following:</p>				
+					<ul>
+						<li>index-es-MX.json</li>
+						<li>header-es-MX.json</li>
+						<li>footer-es-MX.json</li>
+					</ul>				
+					<p data-translate="inDepth5">This can provide you more customization for different regions. Unfortunately, most of current browsers (desktop) only have the language portion though mobile ones use to have both.</p>
+				
+				<h3 data-translate="optionsHeader">Options</h3>				
+					<p data-translate="optionsParagraph">An object containing parameters. Please, note that all parameters are optional. </p>				
+					<blockquote>
+						<p data-translate="oPath"><strong>path</strong> (<em>string</em>): This is the default path of the translation files. Useful if you want to locate your files in a separated folder. <strong>Default</strong>: <em>null</em></p>				
+						<p data-translate="oDefaultLang"><strong>defaultLang</strong> (<em>string</em>): The default language of the Application, this language won't be loaded. <strong>Default</strong>: <em>null</em></p>				
+						<p data-translate="oSkip"><strong>skip</strong>  (<em>array of strings</em>):  An array containing all the languages you want to avoid the translation. <strong>Default</strong>: <em>empty array</em></p>			
+						<p data-translate="oCache"><strong>cache</strong> (<em>boolean</em>): Whether if the language packages should be cached or not. <strong>Default</strong>: <em>true</em></p>				
+						<p data-translate="oOnComplete"><strong>onComplete</strong> (<em>function</em>): Callback function triggered when a DOM element has been translated. <em>this</em> will point to the element.<strong>Default</strong>: <em>null</em></p>				
+					</blockquote>
+				
+				<h3 data-translate="advanced">Advanced</h3>				
+					<p data-translate="advancedParagraph1">Here are some advanced tricks you can use and some extra info.</p>				
+					<p data-translate="pluginReact">First, let's see how the plugin reacts to the elements:</p>				
+					<blockquote>				
+						<p data-translate="input"><strong>input</strong> : It first checks if it's a <strong>placeholder</strong> and, if it is, it translates it. If it doesn't it will change the input value to one supplied.</p>
+						<p data-translate="optgroup"><strong>optgroup</strong> : Get their <strong>label</strong> attribute translated.</p>
+						<p data-translate="img"><strong>img</strong> : Get their <strong>alt</strong> attribute translated.</p>
+						<p data-translate="default"><em>default</em> : Get their HTML replaced.</p>
+					</blockquote>				
+					<h4 data-translate="changingMultiple">Changing multiple attributes for each element</h4>					
+						<p data-translate="multipleExplanation">If the key for a given value contains nested values, it will try change them all. Please, have in mind that <strong>you</strong> are responsible of supplying the correct attributes. For example:</p>
+						
+						<p>index-es.json:</p>
+					
+						<pre>
+{
+  "hello": "Hola!"
+  "img" : {
+    "text" : "Esto es una imagen!",
+    "src" : "linktootherimage.jpg"
+  }
+}
+						</pre>
+				
+						<p data-translate="multipleExplanation2">The <em>text</em> attribute will replace the normal behavior and will follow the aforementioned rules to translate the element. The remaining attributes will be directly changed on the element.</p>
+			
+				<h2 data-translate="FAQ">FAQ</h2>			
+					<h3 data-translate="question1">How can I translate my jQuery Mobile application?</h3>			
+						<h4 data-translate="question1Header">Using jQuery Mobile 1.1 and further</h4>			
+							<pre>
+$(document).on('pagecreate','#home',function(event){
+      $("[data-translate]").jqTranslate('index');
+});
+							</pre>	
+						<h4 data-translate="question1Header2">Pre jQM 1.1</h4>			
+							<pre>
+$('#home').live('pagecreate',function(event){
+      $("[data-translate]").jqTranslate('index');
+});
+							</pre>									
+						<p data-translate="question1Paragraph">Where #home is the ID of the page.</p>
+					<h3 data-translate="question2">My page isn't being translated!</h3>
+						<p data-translate="question2Paragraph">The most common cause of this, is because the JSON package isn't valid. To check it, please use some kind of validation service such as <a href="http://jsonlint.com/">JSONLint</a>.</p>				
+				<h2 data-translate="contributing">Contributing</h2>			
+					<p data-translate="contributingParagraph1">You are invited to contribute code and make suggestions to this project. If you're interested in contributing, please fork the repository, make your changes, and send a pull-request.</p>			
+					<p data-translate="learnMoreAbout">Learn more about <a href="http://help.github.com/fork-a-repo/">how to fork</a> and <a href="http://help.github.com/pull-requests/">pull-requests</a>.</p>			
+				<h2 data-translate="credits">Credits &amp; Licensing</h2>			
+					<p data-translate="license">Dual licensed under the GPL (<a href="http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt">http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt</a>) and MIT (<a href="http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt">http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt</a>) licenses.</p>			
+					<p data-translate="writtenBy">Written by Antonio Laguna (@Belelros). Please use it, and contribute changes.</p>			
+					<p data-translate="basedOn">Based on Jim Garvin's Localisation jQuery plugin. <a href="https://github.com/coderifous/jquery-localize">https://github.com/coderifous/jquery-localize</a>.</p>
+        </article>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="js/jqueryTranslator.js"></script>
+	<script>
+		(function(){
+			//$("[data-translate]").jqTranslate('demo',{defaultLang: 'en'});
+		})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-image: url('../images/pattern.png');
+	font-family: Calibri, Verdana, Ariel, sans-serif; 
+}
+#wrapper {
+	width: 900px;
+	margin: 0 auto;
+	padding: 20px 0;
+
+}
+#wrapper > h1 {
+	text-align: center;
+	font-size: 3em;
+	margin: 0px 0px 15px 0px;
+	padding: 0;
+	font-family: 'Chelsea Market', cursive;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+#wrapper > article {
+    width: 700px;
+    background: #fbfbfb;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 2em 1.5em;
+    color: rgba(0,0,0, .8);
+    text-shadow: 0 1px 0 #fff;
+    line-height: 1.5;
+    margin: 60px auto;
+    -webkit-box-shadow: 0 15px 10px rgba(0,0,0, .7);
+    -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+}
+pre {
+	background-color: #F8F8F8;
+	font-family: monospace;
+	border: 1px solid #CCC;
+	font-size: 13px;
+	line-height: 19px;
+	overflow: auto;
+	padding: 15px 10px 0px 10px;
+	border-radius: 3px;
+}
+blockquote {
+	border-left: 5px solid #CCC;
+	padding: 0 15px;
+	margin: 0;
+}

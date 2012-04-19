@@ -14,8 +14,10 @@ Just include one of the plugin files in your file.
 
 ### Use the "data-translate" attribute on DOM elements you want to be translated
 
+```html
     <h1 data-translate="hello"> Hello! </h1>
     <img data-translate="img" alt="This is an image!" src="someimage.jpg" />
+```
 
 The "hello" and "img" words serve as sort of key so it's easier to locate the translation.
 
@@ -34,13 +36,15 @@ index-es.json:
 
     $("[data-translate]").jqTranslate('index');
     
-# In-depth explanation and Documentation
+## In-depth explanation and Documentation
 
 The first argument the plugin receives, is the package that it has to load. You may have different packs for different parts of the website (header, dialogs, etc);
 
 You can load more than one package like this:
 
+```javascript
     $("[data-translate]").jqTranslate(['index', 'header', 'footer']);
+```
 
 If the language of the user's browser is "es", the plugin will try to load:
 
@@ -56,7 +60,7 @@ If the language also has a country code, like "es-MX", the plugin will ALSO try 
 
 This can provide you more customization for different regions. Unfortunately, most of current browsers (desktop) only have the language portion though mobile ones use to have both.
 
-##Options
+### Options
 
 An object containing parameters. Please, note that all parameters are optional. 
 
@@ -70,7 +74,7 @@ An object containing parameters. Please, note that all parameters are optional.
 
 > **onComplete** (*function*): Callback function triggered when a DOM element has been translated. *this* will point to the element.**Default**: *null*
 
-## Advanced
+### Advanced
 
 Here are some advanced tricks you can use and some extra info.
 
@@ -84,7 +88,7 @@ First, let's see how the plugin reacts to the elements:
 
 >  *default* : Get their HTML replaced.
 
-### Changing multiple attributes for each element
+#### Changing multiple attributes for each element
 
 If the key for a given value contains nested values, it will try change them all. Please, have in mind that **you** are responsible of supplying the correct attributes. For example:
 
@@ -102,18 +106,18 @@ index-es.json:
 
 The *text* attribute will replace the normal behaviour and will follow the aforementioned rules to translate the element. The remaining attributes will be directly changed on the element.
 
-# FAQ
+## FAQ
 
-## How can I translate my jQuery Mobile application?
+### How can I translate my jQuery Mobile application?
 
-### Using jQuery Mobile 1.1 and further
+#### Using jQuery Mobile 1.1 and further
 
 ```javascript
 $(document).on('pagecreate','#home',function(event){
       $("[data-translate]").jqTranslate('index');
 });
 ```
-### Pre jQM 1.1
+#### Pre jQM 1.1
 
 ```javascript
 $('#home').live('pagecreate',function(event){
@@ -123,14 +127,18 @@ $('#home').live('pagecreate',function(event){
 
 Where #home is the ID of the page.
 
-# Contributing
+### My page isn't being translated!
+
+The most common cause of this, is because the JSON package isn't valid. To check it, please use some kind of validation service such as JSONLint.
+
+## Contributing
 
 You are invited to contribute code and make suggestions to this project. If you're interested in contributing, please fork the repository, make your changes, and send a pull-request.
 
 Learn more about [how to fork](http://help.github.com/fork-a-repo/) and
 [pull-requests](http://help.github.com/pull-requests/).
 
-# Credits & Licensing
+## Credits & Licensing
 
 Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses.
 
