@@ -8,14 +8,15 @@
 (function($, window, document, undefined){
     var Translate = {
         initialize : function(pkg, options){
-            var self = this, userLanguage = self.getUserLanguage();
+            var self = this;
             self.packages = [];
             self.loaded = $.Deferred();
 
             self.translatable = true;
 
             self.options = $.extend({}, $.fn.jqTranslate.options, options);
-
+			var userLanguage = (self.options.forceLang) ? self.options.forceLang : self.getUserLanguage();
+            
             if (typeof pkg === 'string')
                 self.packages.push(pkg);
             else
@@ -131,6 +132,7 @@
         defaultLang : null,
         skip : [],
         cache : true,
-        onComplete : null
+        onComplete : null,
+        forceLang : null
     };
 })(jQuery, window, document);

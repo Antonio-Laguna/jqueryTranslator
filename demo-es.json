@@ -22,6 +22,7 @@
 	"oSkip" : "<strong>skip</strong>  (<em>matriz de cadenas</em>):  Una matriz que contiene todos los idiomas de los que quiere evitar la traducción. <strong>Por defecto</strong>: <em>matriz vacía</em>",
 	"oCache" : "<strong>cache</strong> (<em>boleano</em>): Si los paquetes de idioma deben ser almacenados en la cache o no. <strong>Por defecto</strong>: <em>true</em>",
 	"oOnComplete" : "<strong>onComplete</strong> (<em>función</em>): Función callback que se llama cuando un elemento del DOM haya sido traducido. <em>this</em> apuntará al elemento. <strong>Por defecto</strong>: <em>null</em>",
+	"oforceLang" : "<strong>forceLang</strong> (<em>cadena</em>): Cadena que fuerza el idioma para el script, olvidándose del idioma del navegador del usuario. <strong>Por defecto</strong>: <em>null</em>",
 	"advanced" : "Avanzado",
 	"advancedParagraph1" : "He aquí algunos trucos avanzados que puede usar y alguna información extra.",
 	"pluginReact" : "Primero veamos cómo reacciona el plugin a los elementos:",
