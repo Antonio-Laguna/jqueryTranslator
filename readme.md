@@ -8,6 +8,8 @@ jqueryTranslator is a jQuery plugin which allows developers to translate a stati
 
 1.   Finally, if you supply a callback, it will be executed over every element to be translated.
 
+Now you can see a [demo](http://belelros.github.com/jqueryTranslator/).
+
 ## Usage & Documentation
 
 Just include one of the plugin files in your file. 
@@ -73,6 +75,8 @@ An object containing parameters. Please, note that all parameters are optional.
 > **cache** (*boolean*): Whether if the language packages should be cached or not. **Default**: *true*
 
 > **onComplete** (*function*): Callback function triggered when a DOM element has been translated. *this* will point to the element.**Default**: *null*
+
+> **forceLang** (*string*): String that forces the language for the script, forgetting the user's language. **Default**: *null*
 
 ### Advanced
 
