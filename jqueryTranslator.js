@@ -3,7 +3,7 @@
 	Author: Antonio Laguna
 	Twitter: @Belelros
 	Website: http://www.funcion13.com
-	Version: 1.0.1
+	Version: 1.0.2
 */
 (function($, window, document, undefined){
     var Translate = {
@@ -77,7 +77,8 @@
             return $.ajax ({
                 url : url,
                 dataType : "json",
-                cache : self.options.cache
+                cache : self.options.cache,
+		async: self.options.asyncLangLoad
             });
         },
         storeLangFile : function(data){
@@ -132,6 +133,7 @@
         skip : [],
         cache : true,
         onComplete : null,
-        forceLang : null
+        forceLang : null,
+	asyncLangLoad : true
     };
 })(jQuery, window, document);
