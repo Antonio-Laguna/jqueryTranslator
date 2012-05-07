@@ -74,8 +74,9 @@ $("[data-translate]").jqTranslate('index');
 						<p data-translate="oDefaultLang"><strong>defaultLang</strong> (<em>string</em>): The default language of the Application, this language won't be loaded. <strong>Default</strong>: <em>null</em></p>				
 						<p data-translate="oSkip"><strong>skip</strong>  (<em>array of strings</em>):  An array containing all the languages you want to avoid the translation. <strong>Default</strong>: <em>empty array</em></p>			
 						<p data-translate="oCache"><strong>cache</strong> (<em>boolean</em>): Whether if the language packages should be cached or not. <strong>Default</strong>: <em>true</em></p>				
-						<p data-translate="oOnComplete"><strong>onComplete</strong> (<em>function</em>): Callback function triggered when a DOM element has been translated. <em>this</em> will point to the element.<strong>Default</strong>: <em>null</em></p>
-						<p data-translate="oforceLang"><strong>forceLang</strong> (<em>string</em>): String that forces the language for the script, forgetting the user's browser language.<strong>Default</strong>: <em>null</em></p>				
+						<p data-translate="oOnComplete"><strong>onComplete</strong> (<em>function</em>): Callback function triggered when a DOM element has been translated. <em>this</em> will point to the element. <strong>Default</strong>: <em>null</em></p>
+						<p data-translate="oforceLang"><strong>forceLang</strong> (<em>string</em>): String that forces the language for the script, forgetting the user's browser language. <strong>Default</strong>: <em>null</em></p>
+						<p data-translate="oasyncLangLoad"><strong>asyncLangLoad</strong> (<em>boolean</em>): Whether if the language should be loaded asynchronously or syncrhonously. <strong>Default</strong>: <em>true</em> (<em>asyncrhonously</em>)</p>			
 					</blockquote>
 				
 				<h3 data-translate="advanced">Advanced</h3>				
@@ -109,20 +110,22 @@ $("[data-translate]").jqTranslate('index');
 						<h4 data-translate="question1Header">Using jQuery Mobile 1.1 and further</h4>			
 							<pre>
 $(document).on('pagecreate','#home',function(event){
-      $("[data-translate]").jqTranslate('index');
+      $("[data-translate]").jqTranslate('index', { asyncLangLoad: false });
 });
 							</pre>	
 						<h4 data-translate="question1Header2">Pre jQM 1.1</h4>			
 							<pre>
 $('#home').live('pagecreate',function(event){
-      $("[data-translate]").jqTranslate('index');
+      $("[data-translate]").jqTranslate('index', { asyncLangLoad: false });
 });
 							</pre>									
 						<p data-translate="question1Paragraph">Where #home is the ID of the page.</p>
+						<p data-translate="question1Paragraph2">Also, have in mind that you may need to refresh the page element in order to be displayed correctly. Please, head to the <a href="http://jquerymobile.com/demos/1.1.0/index.html">jQuery Mobile documentation</a> to have more info about those methods.</p>
 					<h3 data-translate="question2">My page isn't being translated!</h3>
 						<p data-translate="question2Paragraph">The most common cause of this, is because the JSON package isn't valid. To check it, please use some kind of validation service such as <a href="http://jsonlint.com/">JSONLint</a>.</p>				
 				<h2 data-translate="contributing">Contributing</h2>			
-					<p data-translate="contributingParagraph1">You are invited to contribute code and make suggestions to this project. If you're interested in contributing, please fork the repository, make your changes, and send a pull-request.</p>			
+					<p data-translate="contributingParagraph1">You are invited to contribute code and make suggestions to this project. If you're interested in contributing, please fork the repository, make your changes, and send a pull-request.</p>
+					<p data-translate="contributingParagraph2">Also, consider submitting your own's language localization and I'll include them in the demo page!</p>		
 					<p data-translate="learnMoreAbout">Learn more about <a href="http://help.github.com/fork-a-repo/">how to fork</a> and <a href="http://help.github.com/pull-requests/">pull-requests</a>.</p>			
 				<h2 data-translate="credits">Credits &amp; Licensing</h2>			
 					<p data-translate="license">Dual licensed under the GPL (<a href="http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt">http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt</a>) and MIT (<a href="http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt">http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt</a>) licenses.</p>			
