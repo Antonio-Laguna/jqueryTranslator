@@ -3,33 +3,33 @@
 	Author: Antonio Laguna
 	Twitter: @Belelros
 	Website: http://www.funcion13.com
-	Version: 1.0
+	Version: 1.0.2
 */
 (function($, window, document, undefined){
     var Translate = {
         initialize : function(pkg, options){
-            var self = this, userLanguage = self.getUserLanguage();
-            self.packages = [];
-            self.loaded = $.Deferred();
+            this.packages = [];
+            this.loaded = $.Deferred();
 
-            self.translatable = true;
+            this.translatable = true;
 
-            self.options = $.extend({}, $.fn.jqTranslate.options, options);
-
+            this.options = $.extend({}, $.fn.jqTranslate.options, options);
+            var userLanguage = this.getUserLanguage();
+            
             if (typeof pkg === 'string')
-                self.packages.push(pkg);
+                this.packages.push(pkg);
             else
-                self.packages = pkg;
+                this.packages = pkg;
 
-            if (self.isTranslatable(userLanguage))
-                self.loadLanguages();
+            if (this.isTranslatable(userLanguage))
+                this.loadLanguages();
             else
-                self.translatable = false;
+                this.translatable = false;
 
-            return self.loaded.promise();
+            return this.loaded.promise();
         },
         getUserLanguage : function(){
-            var userLang = navigator.language || navigator.userLanguage;
+            var userLang = this.options.forceLang || navigator.language || navigator.userLanguage;
             userLang = userLang.replace(/_/, '-').toLowerCase();
 
             if (userLang.length > 3){
@@ -77,7 +77,8 @@
             return $.ajax ({
                 url : url,
                 dataType : "json",
-                cache : self.options.cache
+                cache : self.options.cache,
+		async: self.options.asyncLangLoad
             });
         },
         storeLangFile : function(data){
@@ -131,6 +132,8 @@
         defaultLang : null,
         skip : [],
         cache : true,
-        onComplete : null
+        onComplete : null,
+        forceLang : null,
+		asyncLangLoad : true
     };
 })(jQuery, window, document);

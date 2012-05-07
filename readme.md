@@ -78,6 +78,8 @@ An object containing parameters. Please, note that all parameters are optional.
 
 > **forceLang** (*string*): String that forces the language for the script, forgetting the user's language. **Default**: *null*
 
+> **asyncLangLoad** (*boolean*): Whether if the language should be loaded asynchronously or syncrhonously. **Default**: *true* (*asynchronously*)
+
 ### Advanced
 
 Here are some advanced tricks you can use and some extra info.
@@ -118,18 +120,20 @@ The *text* attribute will replace the normal behaviour and will follow the afore
 
 ```javascript
 $(document).on('pagecreate','#home',function(event){
-      $("[data-translate]").jqTranslate('index');
+      $("[data-translate]").jqTranslate('index', { asyncLangLoad: false });
 });
 ```
 #### Pre jQM 1.1
 
 ```javascript
 $('#home').live('pagecreate',function(event){
-      $("[data-translate]").jqTranslate('index');
+      $("[data-translate]").jqTranslate('index', { asyncLangLoad: false });
 });
 ```
 
 Where #home is the ID of the page.
+
+Also, have in mind that you may need to refresh the page element in order to be displayed correctly. Please, head to the [jQuery Mobile documentation](http://jquerymobile.com/demos/1.1.0/index.html) to have more info about those methods.
 
 ### My page isn't being translated!
 
@@ -138,6 +142,8 @@ The most common cause of this, is because the JSON package isn't valid. To check
 ## Contributing
 
 You are invited to contribute code and make suggestions to this project. If you're interested in contributing, please fork the repository, make your changes, and send a pull-request.
+
+Also, consider submitting your own's language localization and I'll include them in the demo page!
 
 Learn more about [how to fork](http://help.github.com/fork-a-repo/) and
 [pull-requests](http://help.github.com/pull-requests/).

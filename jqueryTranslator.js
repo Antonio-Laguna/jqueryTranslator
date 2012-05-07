@@ -134,6 +134,6 @@
         cache : true,
         onComplete : null,
         forceLang : null,
-	asyncLangLoad : true
+		asyncLangLoad : true
     };
 })(jQuery, window, document);
