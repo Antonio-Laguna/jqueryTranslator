@@ -3,7 +3,7 @@
 	Author: Antonio Laguna
 	Twitter: @Belelros
 	Website: http://www.funcion13.com
-	Version: 1.0
+	Version: 1.0.1
 */
 (function($, window, document, undefined){
     var Translate = {
@@ -15,7 +15,7 @@
             self.translatable = true;
 
             self.options = $.extend({}, $.fn.jqTranslate.options, options);
-			var userLanguage = (self.options.forceLang) ? self.options.forceLang : self.getUserLanguage();
+			var userLanguage = (self.options.forceLang) ? [self.options.forceLang] : self.getUserLanguage();
             
             if (typeof pkg === 'string')
                 self.packages.push(pkg);
