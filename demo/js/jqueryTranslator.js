@@ -3,7 +3,7 @@
 	Author: Antonio Laguna
 	Twitter: @Belelros
 	Website: http://www.funcion13.com
-	Version: 1.0.2
+	Version: 1.0.3
 */
 (function($, window, document, undefined){
     var Translate = {
@@ -16,20 +16,26 @@
             this.options = $.extend({}, $.fn.jqTranslate.options, options);
             var userLanguage = this.getUserLanguage();
             
-            if (typeof pkg === 'string')
+            if (typeof pkg === 'string'){
                 this.packages.push(pkg);
-            else
+            }
+            else {
                 this.packages = pkg;
+            }
 
-            if (this.isTranslatable(userLanguage))
+            if (this.isTranslatable(userLanguage)){
                 this.loadLanguages();
-            else
+            }
+            else{
                 this.translatable = false;
+            }
 
             return this.loaded.promise();
         },
         getUserLanguage : function(){
             var userLang = this.options.forceLang || navigator.language || navigator.userLanguage;
+            $.defaultLanguage = userLang;
+
             userLang = userLang.replace(/_/, '-').toLowerCase();
 
             if (userLang.length > 3){
@@ -78,11 +84,11 @@
                 url : url,
                 dataType : "json",
                 cache : self.options.cache,
-		async: self.options.asyncLangLoad
+		        async: self.options.asyncLangLoad
             });
         },
         storeLangFile : function(data){
-            $.extend(Translate.translatedStrings, data);            
+            $.extend(Translate.translatedStrings, data);
         },
         translate : function() {
         	var elem = $(this), key = elem.data('translate');
@@ -92,7 +98,7 @@
                         // The key have nested keys
                         Translate.translateElement(elem,Translate.translatedStrings[key].text);
                         delete Translate.translatedStrings[key].text;
-                        elem.attr(Translate.translatedStrings[key])
+                        elem.attr(Translate.translatedStrings[key]);
                     }
                     else
                         Translate.translateElement(elem,Translate.translatedStrings[key]);
@@ -124,8 +130,9 @@
     $.fn.jqTranslate = function(pkg, options){
         var self = this;
         Translate.initialize(pkg, options).done(function(){
-            return self.each(Translate.translate);
+            self.each(Translate.translate);
         });
+        return this;
     };
     $.fn.jqTranslate.options = {
         path : null,

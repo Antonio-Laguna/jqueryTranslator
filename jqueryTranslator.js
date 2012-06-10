@@ -130,8 +130,9 @@
     $.fn.jqTranslate = function(pkg, options){
         var self = this;
         Translate.initialize(pkg, options).done(function(){
-            return self.each(Translate.translate);
+            self.each(Translate.translate);
         });
+        return this;
     };
     $.fn.jqTranslate.options = {
         path : null,
