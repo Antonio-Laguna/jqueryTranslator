@@ -3,7 +3,7 @@
 	Author: Antonio Laguna
 	Twitter: @Belelros
 	Website: http://www.funcion13.com
-	Version: 1.0.3
+	Version: 1.0.4
 */
 (function($, window, document, undefined){
     var Translate = {
@@ -109,11 +109,13 @@
             return elem;
         },
         translateElement : function (elem, value){
-            if (elem.is('input')) {
-                if (elem.is('[placeholder]'))
+            if (elem.is('input') || elem.is('textarea')) {
+                if (elem.is('[placeholder]')){
                     elem.attr('placeholder', value);
-                else
+                }
+                else{
                     elem.val(value);
+                }
             }
             else if (elem.is('optgroup')){
                 elem.attr('label', value);

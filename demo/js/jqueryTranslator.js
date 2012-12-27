@@ -1,10 +1,10 @@
 /*
-	Name: jqueryTranslator
-	Author: Antonio Laguna
-	Twitter: @Belelros
-	Website: http://www.funcion13.com
-	Version: 1.0.3
-*/
+ Name: jqueryTranslator
+ Author: Antonio Laguna
+ Twitter: @Belelros
+ Website: http://www.funcion13.com
+ Version: 1.0.4
+ */
 (function($, window, document, undefined){
     var Translate = {
         initialize : function(pkg, options){
@@ -15,7 +15,7 @@
 
             this.options = $.extend({}, $.fn.jqTranslate.options, options);
             var userLanguage = this.getUserLanguage();
-            
+
             if (typeof pkg === 'string'){
                 this.packages.push(pkg);
             }
@@ -66,11 +66,11 @@
 
                 $.each(Translate.languages, function (i, lang){
                     Translate.getLanguage(ePkg,lang)
-                    .done(Translate.storeLangFile)
-                    .always(function(){
-                        loaded++;
-                        if (loaded >= maxLoad) Translate.loaded.resolve();
-                    });
+                        .done(Translate.storeLangFile)
+                        .always(function(){
+                            loaded++;
+                            if (loaded >= maxLoad) Translate.loaded.resolve();
+                        });
                 });
             });
         },
@@ -84,14 +84,14 @@
                 url : url,
                 dataType : "json",
                 cache : self.options.cache,
-		        async: self.options.asyncLangLoad
+                async: self.options.asyncLangLoad
             });
         },
         storeLangFile : function(data){
             $.extend(Translate.translatedStrings, data);
         },
         translate : function() {
-        	var elem = $(this), key = elem.data('translate');
+            var elem = $(this), key = elem.data('translate');
             if (Translate.translatable){
                 if (Translate.translatedStrings[key]){
                     if (Translate.translatedStrings[key].length === undefined){
@@ -109,11 +109,13 @@
             return elem;
         },
         translateElement : function (elem, value){
-            if (elem.is('input')) {
-                if (elem.is('[placeholder]'))
+            if (elem.is('input') || elem.is('textarea')) {
+                if (elem.is('[placeholder]')){
                     elem.attr('placeholder', value);
-                else
+                }
+                else{
                     elem.val(value);
+                }
             }
             else if (elem.is('optgroup')){
                 elem.attr('label', value);
@@ -141,6 +143,6 @@
         cache : true,
         onComplete : null,
         forceLang : null,
-		asyncLangLoad : true
+        asyncLangLoad : true
     };
 })(jQuery, window, document);
