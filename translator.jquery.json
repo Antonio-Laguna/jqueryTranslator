@@ -1,0 +1,27 @@
+{
+  "name": "translator",
+  "title": "jQueryTranslator",
+  "description": "jqueryTranslator is a jQuery plugin which allows developers to translate a static web site easily.",
+  "keywords": [
+    "translation",
+    "i18n"
+  ],
+  "version": "1.1.0",
+  "author": {
+    "name": "Antonio Laguna Matías",
+	"email" : "a.laguna@funcion13.com",
+    "url": "http://www.funcion13.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Belelros/jqueryTranslator/blob/master/MIT-LICENSE.txt"
+    }
+  ],
+  "bugs": "https://github.com/Belelros/jqueryTranslator/issues",
+  "homepage": "http://belelros.github.com/jqueryTranslator/",
+  "docs": "https://github.com/Belelros/jqueryTranslator",
+  "dependencies": {
+    "jquery": ">=1.7"
+  }
+}

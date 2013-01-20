@@ -64,21 +64,23 @@ This can provide you more customization for different regions. Unfortunately, mo
 
 ### Options
 
-An object containing parameters. Please, note that all parameters are optional. 
+An object containing parameters. Please, note that all parameters are optional.
 
->  **path** (*string*): This is the default path of the translation files. Useful if you want to locate your files in a separated folder. **Default**: *null*  
-
-> **defaultLang** (*string*): The default language of the Application, this language won't be loaded. **Default**: *null*
-
-> **skip**	(*array of strings*):  An array containing all the languages you want to avoid the translation. **Default**: *empty array*
+> **asyncLangLoad** (*boolean*): Whether if the language should be loaded asynchronously or syncrhonously. **Default**: *true* (*asynchronously*)
 
 > **cache** (*boolean*): Whether if the language packages should be cached or not. **Default**: *true*
 
-> **onComplete** (*function*): Callback function triggered when a DOM element has been translated. *this* will point to the element.**Default**: *null*
+> **defaultLang** (*string*): The default language of the Application, this language won't be loaded. **Default**: *null*
+
+> **fallbackLang** (*string*): String that sets a fallback language to load in case it can't load the user language. **Default**: *null*
 
 > **forceLang** (*string*): String that forces the language for the script, forgetting the user's language. **Default**: *null*
 
-> **asyncLangLoad** (*boolean*): Whether if the language should be loaded asynchronously or syncrhonously. **Default**: *true* (*asynchronously*)
+> **path** (*string*): This is the default path of the translation files. Useful if you want to locate your files in a separated folder. **Default**: *null*
+
+> **onComplete** (*function*): Callback function triggered when a DOM element has been translated. *this* will point to the element.**Default**: *null*
+
+> **skip**	(*array of strings*):  An array containing all the languages you want to avoid the translation. **Default**: *empty array*
 
 ### Advanced
 

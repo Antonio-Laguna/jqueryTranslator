@@ -1,10 +1,10 @@
 /*
- Name: jqueryTranslator
- Author: Antonio Laguna
- Twitter: @Belelros
- Website: http://www.funcion13.com
- Version: 1.0.4
- */
+	Name: jqueryTranslator
+	Author: Antonio Laguna
+	Twitter: @Belelros
+	Website: http://www.funcion13.com
+	Version: 1.1
+*/
 (function($, window, document, undefined){
     var Translate = {
         initialize : function(pkg, options){
@@ -15,7 +15,7 @@
 
             this.options = $.extend({}, $.fn.jqTranslate.options, options);
             var userLanguage = this.getUserLanguage();
-
+            
             if (typeof pkg === 'string'){
                 this.packages.push(pkg);
             }
@@ -45,17 +45,18 @@
                     userLang.substring(3).toUpperCase()
                 ];
             }
-            else
+            else {
                 this.languages = [
                     userLang
                 ];
+            }
 
             $.fn.jqTranslate.userLang = userLang;
             return userLang;
         },
         isTranslatable : function(language){
-            if (this.options.defaultLang === language) return false;
-            else return (this.options.skip.indexOf(language) === -1);
+            if (this.options.defaultLang === language) { return false; }
+            else { return (this.options.skip.indexOf(language) === -1); }
         },
         loadLanguages : function(){
             var loaded = 0, maxLoad = Translate.languages.length * Translate.packages.length;
@@ -66,32 +67,57 @@
 
                 $.each(Translate.languages, function (i, lang){
                     Translate.getLanguage(ePkg,lang)
-                        .done(Translate.storeLangFile)
-                        .always(function(){
-                            loaded++;
-                            if (loaded >= maxLoad) Translate.loaded.resolve();
-                        });
+                    .done(Translate.storeLangFile)
+                    .always(function(){
+                        loaded++;
+                        if (loaded >= maxLoad){Translate.loaded.resolve();}
+                    });
                 });
             });
         },
         getLanguage : function(pkg, language){
-            var self = this, url = '';
+            var self = this,
+                path = '',
+                got = $.Deferred();
+
             if (self.options.path){
-                url = self.options.path + '/';
+                path = self.options.path + '/';
             }
-            url += [pkg, language].join('-') + '.json';
-            return $.ajax ({
+            var url = path + [pkg, language].join('-') + '.json';
+
+            $.ajax ({
                 url : url,
                 dataType : "json",
                 cache : self.options.cache,
                 async: self.options.asyncLangLoad
+            }).done(function(data){
+                got.resolve(data);
+            }).fail(function(){
+                if (self.options.fallbackLang){
+                    url = path + [pkg, self.options.fallbackLang].join('-') + '.json';
+                    $.ajax ({
+                        url : url,
+                        dataType : "json",
+                        cache : self.options.cache,
+                        async: self.options.asyncLangLoad
+                    }).done(function(data){
+                        got.resolve(data);
+                    });
+                }
+                else {
+                    got.reject();
+                }
             });
+
+            return got;
         },
         storeLangFile : function(data){
             $.extend(Translate.translatedStrings, data);
         },
         translate : function() {
-            var elem = $(this), key = elem.data('translate');
+            var elem = $(this),
+                key = elem.data('translate');
+
             if (Translate.translatable){
                 if (Translate.translatedStrings[key]){
                     if (Translate.translatedStrings[key].length === undefined){
@@ -100,12 +126,16 @@
                         delete Translate.translatedStrings[key].text;
                         elem.attr(Translate.translatedStrings[key]);
                     }
-                    else
+                    else{
                         Translate.translateElement(elem,Translate.translatedStrings[key]);
+                    }
                 }
             }
-            if (typeof Translate.options.onComplete === 'function')
+
+            if (typeof Translate.options.onComplete === 'function'){
                 Translate.options.onComplete.apply(this, arguments);
+            }
+
             return elem;
         },
         translateElement : function (elem, value){
@@ -137,12 +167,13 @@
         return this;
     };
     $.fn.jqTranslate.options = {
-        path : null,
-        defaultLang : null,
-        skip : [],
+        asyncLangLoad : true,
         cache : true,
-        onComplete : null,
+        defaultLang : null,
+        fallbackLang : null,
         forceLang : null,
-        asyncLangLoad : true
+        onComplete : null,
+        path : null,
+        skip : []
     };
 })(jQuery, window, document);
