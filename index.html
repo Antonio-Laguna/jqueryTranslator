@@ -50,7 +50,7 @@ $("[data-translate]").jqTranslate('index');
 					<p data-translate="inDepth1">The first argument the plugin receives, is the package that it has to load. You may have different packs for different parts of the website (header, dialogs, etc);</p>
 					<p data-translate="inDepth2">You can load more than one package like this:</p>		
 					<pre>
-	$("[data-translate]").jqTranslate(['index', 'header', 'footer']);
+$("[data-translate]").jqTranslate(['index', 'header', 'footer']);
 					</pre>
 				
 					<p data-translate="inDepth3">If the language of the user's browser is "es", the plugin will try to load:</p>				
@@ -59,7 +59,7 @@ $("[data-translate]").jqTranslate('index');
 						<li>header-es.json</li>
 						<li>footer-es.json</li>
 					</ul>				
-					<p data-translate="inDepth4">If the language also has a country code, like "es-MX", the plugin will ALSO try to load the following:</p>				
+					<p data-translate="inDepth4">If the language also has a country code, like "es-MX", the plugin will <strong>ALSO</strong> try to load the following:</p>
 					<ul>
 						<li>index-es-MX.json</li>
 						<li>header-es-MX.json</li>
@@ -70,15 +70,16 @@ $("[data-translate]").jqTranslate('index');
 				<h3 data-translate="optionsHeader">Options</h3>				
 					<p data-translate="optionsParagraph">An object containing parameters. Please, note that all parameters are optional. </p>				
 					<blockquote>
-						<p data-translate="oPath"><strong>path</strong> (<em>string</em>): This is the default path of the translation files. Useful if you want to locate your files in a separated folder. <strong>Default</strong>: <em>null</em></p>				
-						<p data-translate="oDefaultLang"><strong>defaultLang</strong> (<em>string</em>): The default language of the Application, this language won't be loaded. <strong>Default</strong>: <em>null</em></p>				
-						<p data-translate="oSkip"><strong>skip</strong>  (<em>array of strings</em>):  An array containing all the languages you want to avoid the translation. <strong>Default</strong>: <em>empty array</em></p>			
-						<p data-translate="oCache"><strong>cache</strong> (<em>boolean</em>): Whether if the language packages should be cached or not. <strong>Default</strong>: <em>true</em></p>				
-						<p data-translate="oOnComplete"><strong>onComplete</strong> (<em>function</em>): Callback function triggered when a DOM element has been translated. <em>this</em> will point to the element. <strong>Default</strong>: <em>null</em></p>
-						<p data-translate="oforceLang"><strong>forceLang</strong> (<em>string</em>): String that forces the language for the script, forgetting the user's browser language. <strong>Default</strong>: <em>null</em></p>
-						<p data-translate="oasyncLangLoad"><strong>asyncLangLoad</strong> (<em>boolean</em>): Whether if the language should be loaded asynchronously or syncrhonously. <strong>Default</strong>: <em>true</em> (<em>asyncrhonously</em>)</p>			
-					</blockquote>
-				
+                        <p data-translate="oasyncLangLoad"><strong>asyncLangLoad</strong> (<em>boolean</em>): Whether if the language should be loaded asynchronously or syncrhonously. <strong>Default</strong>: <em>true</em> (<em>asyncrhonously</em>)</p>
+                        <p data-translate="oCache"><strong>cache</strong> (<em>boolean</em>): Whether if the language packages should be cached or not. <strong>Default</strong>: <em>true</em></p>
+                        <p data-translate="oDefaultLang"><strong>defaultLang</strong> (<em>string</em>): The default language of the Application, this language won't be loaded. <strong>Default</strong>: <em>null</em></p>
+                        <p data-translate="ofallbackLang"><strong>fallbackLang</strong> (<em>string</em>): String that sets a fallback language to load in case it can't load the user language. <strong>Default</strong>: <em>null</em></p>
+                        <p data-translate="oforceLang"><strong>forceLang</strong> (<em>string</em>): String that forces the language for the script, forgetting the user's browser language. <strong>Default</strong>: <em>null</em></p>
+                        <p data-translate="oOnComplete"><strong>onComplete</strong> (<em>function</em>): Callback function triggered when a DOM element has been translated. <em>this</em> will point to the element. <strong>Default</strong>: <em>null</em></p>
+                        <p data-translate="oPath"><strong>path</strong> (<em>string</em>): This is the default path of the translation files. Useful if you want to locate your files in a separated folder. <strong>Default</strong>: <em>null</em></p>
+                        <p data-translate="oSkip"><strong>skip</strong>  (<em>array of strings</em>):  An array containing all the languages you want to avoid the translation. <strong>Default</strong>: <em>empty array</em></p>
+                    </blockquote>
+
 				<h3 data-translate="advanced">Advanced</h3>				
 					<p data-translate="advancedParagraph1">Here are some advanced tricks you can use and some extra info.</p>				
 					<p data-translate="pluginReact">First, let's see how the plugin reacts to the elements:</p>				
@@ -133,8 +134,8 @@ $('#home').live('pagecreate',function(event){
 					<p data-translate="basedOn">Based on Jim Garvin's Localisation jQuery plugin. <a href="https://github.com/coderifous/jquery-localize">https://github.com/coderifous/jquery-localize</a>.</p>
         </article>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="js/jqueryTranslator.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+	<script src="js/jqueryTranslator.min.js"></script>
 	<script>
 		(function(){
 			$("[data-translate]").jqTranslate('demo',{defaultLang: 'en'});
