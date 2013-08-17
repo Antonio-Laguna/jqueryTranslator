@@ -56,7 +56,7 @@
         },
         isTranslatable : function(language){
             if (this.options.defaultLang === language) { return false; }
-            else { return (this.options.skip.indexOf(language) === -1); }
+            else { return ($.inArray(language, this.options.skip) === -1); }
         },
         loadLanguages : function(){
             var loaded = 0, maxLoad = Translate.languages.length * Translate.packages.length;
