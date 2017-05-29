@@ -1,6 +1,6 @@
 #jqueryTranslator
 
-jqueryTranslator is a jQuery plugin which allows developers to translate a static web site easily. 
+jqueryTranslator is a jQuery plugin which allows developers to translate a static web site easily.
 
 1.   It first loads asynchronously the translation files you supply to the plugin. It can be a string or an array of them.
 
@@ -12,7 +12,7 @@ Now you can see a [demo](http://belelros.github.com/jqueryTranslator/).
 
 ## Usage & Documentation
 
-Just include one of the plugin files in your file. 
+Just include one of the plugin files in your file.
 
 ### Use the "data-translate" attribute on DOM elements you want to be translated
 
@@ -33,11 +33,11 @@ index-es.json:
       "img" : "Esto es una imagen!"
     }
 ```
-    
+
 ### Call the plugin!
 
     $("[data-translate]").jqTranslate('index');
-    
+
 ## In-depth explanation and Documentation
 
 The first argument the plugin receives, is the package that it has to load. You may have different packs for different parts of the website (header, dialogs, etc);
@@ -82,13 +82,15 @@ An object containing parameters. Please, note that all parameters are optional.
 
 > **skip**	(*array of strings*):  An array containing all the languages you want to avoid the translation. **Default**: *empty array*
 
+> **packageToLocaleDelimiter**	(*string*):  String that sets what the text to delimit the package file name from the locale code. **Default**: *-*
+
 ### Advanced
 
 Here are some advanced tricks you can use and some extra info.
 
 First, let's see how the plugin reacts to the elements:
 
->  **input** : It first checks if it's a **placeholder** and, if it is, it translates it. If it doesn't it will change the input value to one supplied. 
+>  **input** : It first checks if it's a **placeholder** and, if it is, it translates it. If it doesn't it will change the input value to one supplied.
 
 >  **optgroup** : Get their **label** attribute translated
 
