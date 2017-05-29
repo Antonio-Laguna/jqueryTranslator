@@ -36,7 +36,7 @@
       var userLang = this.options.forceLang || navigator.language || navigator.userLanguage;
       $.defaultLanguage = userLang;
 
-      userLang = userLang.replace(/_/, '-').toLowerCase();
+      userLang = userLang.replace(/_/, this.options.packageToLocaleDelimiter).toLowerCase();
 
       if (userLang.length > 3){
         userLang = userLang.substring(0,3) + userLang.substring(3).toUpperCase();
@@ -83,7 +83,7 @@
       if (self.options.path){
         path = self.options.path + '/';
       }
-      var url = path + [pkg, language].join('-') + '.json';
+      var url = path + [pkg, language].join(self.options.packageToLocaleDelimiter) + '.json';
 
       $.ajax ({
         url : url,
@@ -94,7 +94,7 @@
         got.resolve(data);
       }).fail(function(){
         if (self.options.fallbackLang){
-          url = path + [pkg, self.options.fallbackLang].join('-') + '.json';
+          url = path + [pkg, self.options.fallbackLang].join(self.options.packageToLocaleDelimiter) + '.json';
           $.ajax ({
             url : url,
             dataType : "json",
@@ -174,6 +174,7 @@
     forceLang : null,
     onComplete : null,
     path : null,
-    skip : []
+    skip : [],
+    packageToLocaleDelimiter: '-'
   };
 })(jQuery, window, document);
